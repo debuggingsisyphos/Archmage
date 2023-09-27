@@ -1,0 +1,26 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Archmage"
+run/main_scene="res://strategy_map.tscn"
+config/features=PackedStringArray("4.1", "Forward Plus")
+boot_splash/image="res://GameLoadImages/DALL·E 2023-02-20 01.48.26 - A zoomed out realistic oil painting of a middle aged alchemist with a short black beard, a black elegant tunic, a necklace and blue eyes standing in h.png"
+config/icon="res://GameLoadImages/DALL·E 2023-09-22 16.06.29 - oil painting portrait of an archmage in dark clothing an with a long grey beard.png"
+
+[layer_names]
+
+2d_navigation/layer_1="WorldMapCharacters"
+
+[rendering]
+
+anti_aliasing/quality/msaa_2d=3
+anti_aliasing/quality/screen_space_aa=1
