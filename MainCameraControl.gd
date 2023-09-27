@@ -22,26 +22,15 @@ func _process(delta):
 	
 func cameraMovementControl(event):
 	if event is InputEventKey:
-		if  OS.get_keycode_string(event.keycode) == forwardButton:
-			if event.is_pressed():
-				collectedVector.y = -1
-			if event.is_released():
-				collectedVector.y = 0
-		if OS.get_keycode_string(event.keycode) == backwardsButton:
-			if event.is_pressed():
-				collectedVector.y = 1
-			if event.is_released():
-				collectedVector.y = 0
-		if OS.get_keycode_string(event.keycode) == leftwardsButton:
-			if event.is_pressed():
-				collectedVector.x = -1
-			if event.is_released():
-				collectedVector.x = 0
-		if OS.get_keycode_string(event.keycode) == rightwardsButton:
-			if event.is_pressed():
-				collectedVector.x = 1
-			if event.is_released():
-				collectedVector.x = 0
+		match OS.get_keycode_string(event.keycode):
+			forwardButton:
+				collectedVector.y = -1 if event.is_pressed() else 0
+			backwardsButton:
+				collectedVector.y = 1 if event.is_pressed() else 0
+			leftwardsButton:
+				collectedVector.x = -1 if event.is_pressed() else 0
+			rightwardsButton:
+				collectedVector.x = 1 if event.is_pressed() else 0
 	
 func zoomControl(event):
 	if event is InputEventMouseButton:
