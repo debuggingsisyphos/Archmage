@@ -1,22 +1,22 @@
 extends TileMap
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed():
-			var pos_clicked = local_to_map(to_local(event.position))
-
-@export var character_speed: float = 400.0
+@export var character_speed: float = 400
+var character
 var path = []
-
 var map
-
-@onready var character = get_node("StrategyMap/TileMap/Player")
 
 
 func _ready():
-	# use call deferred to make sure the entire SceneTree Nodes are setup
-	# else yield on 'physics_frame' in a _ready() might get stuck
-	call_deferred("setup_navserver")
+	character = get_node("Player")
+	character.position = map_to_local(Vector2.ZERO) 
+
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed():
+			var hex_clicked =local_to_map(to_local(event.position))
+			var hex_center = map_to_local(hex_clicked)
+			print(hex_center)
+			_update_navigation_path(character.position, hex_center)
 
 
 func _process(delta):
@@ -24,18 +24,10 @@ func _process(delta):
 	move_along_path(walk_distance)
 
 
-# The "click" event is a custom input action defined in
-# Project > Project Settings > Input Map tab.
-func _unhandled_input(event):
-	if not event.is_action_pressed("click"):
-		return
-	_update_navigation_path(character.position, get_local_mouse_position())
-
-
 func setup_navserver():
 
 	# create a new navigation map
-	map = NavigationServer2D.map_create()
+	map = get_navigation_map(1)
 	NavigationServer2D.map_set_active(map, true)
 
 	# create a new navigation region and add it to the map
@@ -73,9 +65,10 @@ func _update_navigation_path(start_position, end_position):
 	# map_get_path is part of the avigation2DServer class.
 	# It returns a PoolVector2Array of points that lead you
 	# from the start_position to the end_position.
-	path = NavigationServer2D.map_get_path(map,start_position, end_position, true)
+	path = NavigationServer2D.map_get_path(get_world_2d().navigation_map,start_position, end_position, true)
+	print(path)
+	# path = NavigationServer2D.map_get_path(map,start_position, end_position, true)
 	# The first point is always the start_position.
 	# We don't need it in this example as it corresponds to the character's position.
-	path.remove_at(0)
 	set_process(true)
 

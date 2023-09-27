@@ -12,11 +12,11 @@ var leftwardsButton = "A"
 var rightwardsButton = "D"
 
 
-func _input(event):
+func _unhandled_input(event):
 	cameraMovementControl(event)
 	zoomControl(event)
 
-func _process(delta):
+func _process(_delta):
 	velocity = collectedVector.normalized() * speed * (1/get_zoom().x)
 	position += velocity
 	
