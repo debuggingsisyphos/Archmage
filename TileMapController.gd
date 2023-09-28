@@ -12,11 +12,11 @@ func _ready():
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
+		var localMousePosition = get_local_mouse_position()
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed():
-			var hex_clicked =local_to_map(to_local(event.position))
+			var hex_clicked =local_to_map(localMousePosition)
 			var hex_center = map_to_local(hex_clicked)
-			print(hex_center)
-			_update_navigation_path(character.position, hex_center)
+			_update_navigation_path(character.position, localMousePosition)
 
 
 func _process(delta):
