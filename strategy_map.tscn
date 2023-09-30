@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cff3a0afdn7vr"]
+[gd_scene load_steps=21 format=3 uid="uid://cff3a0afdn7vr"]
 
 [ext_resource type="Texture2D" uid="uid://3bbi3qx8cb1j" path="res://Tiles/DarkGreen.png" id="1_njjjc"]
 [ext_resource type="Script" path="res://MainCameraControl.gd" id="2_rqqpj"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b2mvk6yifw1k4" path="res://Tiles/LightGreen.png" id="5_22mbj"]
 [ext_resource type="Script" path="res://TileMapController.gd" id="6_3bjj8"]
 [ext_resource type="PackedScene" uid="uid://d0nto4qa3jbma" path="res://Characters/PlayerCharacters/Player.tscn" id="7_jq8jq"]
+[ext_resource type="PackedScene" uid="uid://llxpnen26fsa" path="res://Buildings/city.tscn" id="9_dihsu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gheah"]
 vertices = PackedVector2Array(30, -16, 30, 16, 0, 32, -30, 16, -30, -16, 0, -32)
@@ -113,3 +114,12 @@ script = ExtResource("6_3bjj8")
 [node name="MainCamera" type="Camera2D" parent="."]
 position = Vector2(180, 274)
 script = ExtResource("2_rqqpj")
+
+[node name="City3" parent="." instance=ExtResource("9_dihsu")]
+position = Vector2(422, 455)
+
+[node name="City2" parent="." instance=ExtResource("9_dihsu")]
+position = Vector2(-28, 213)
+
+[node name="City" parent="." instance=ExtResource("9_dihsu")]
+position = Vector2(182, 70)

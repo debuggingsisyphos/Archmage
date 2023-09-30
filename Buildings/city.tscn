@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://llxpnen26fsa"]
+
+[ext_resource type="Texture2D" uid="uid://xigusa6i3die" path="res://Buildings/GenericCity.png" id="1_ny8rx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h8m6p"]
+radius = 42.7551
+
+[node name="City" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ny8rx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -3.14159
+shape = SubResource("CircleShape2D_h8m6p")
