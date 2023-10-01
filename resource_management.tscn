@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://g1d7n0sjg00"]
+
+[ext_resource type="Script" path="res://ResourceManagement.gd" id="1_yr47j"]
+[ext_resource type="Script" path="res://Resources.gd" id="2_vd2ao"]
+[ext_resource type="Script" path="res://ResourceOwner.gd" id="3_shnmr"]
+
+[node name="ResourceManagement" type="Node"]
+script = ExtResource("1_yr47j")
+
+[node name="Resources" type="Node" parent="."]
+script = ExtResource("2_vd2ao")
+
+[node name="ResourceOwner" type="Node" parent="."]
+script = ExtResource("3_shnmr")
