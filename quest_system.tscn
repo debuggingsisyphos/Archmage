@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwfy8mk7f08bi"]
+
+[ext_resource type="Script" path="res://Quest.gd" id="1_5bq12"]
+[ext_resource type="Script" path="res://QuestReward.gd" id="2_qejjc"]
+[ext_resource type="Script" path="res://QuestObjective.gd" id="3_pbr12"]
+[ext_resource type="Script" path="res://QuestTask.gd" id="4_jpqkp"]
+[ext_resource type="Script" path="res://QuestHolder.gd" id="5_diibf"]
+
+[node name="QuestSystem" type="Node"]
+
+[node name="Quest" type="Node" parent="."]
+script = ExtResource("1_5bq12")
+
+[node name="QuestReward" type="Node" parent="."]
+script = ExtResource("2_qejjc")
+
+[node name="QuestObjective" type="Node" parent="."]
+script = ExtResource("3_pbr12")
+
+[node name="QuestTask" type="Node" parent="QuestObjective"]
+script = ExtResource("4_jpqkp")
+
+[node name="QuestHolder" type="Node" parent="."]
+script = ExtResource("5_diibf")
