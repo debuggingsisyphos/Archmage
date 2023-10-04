@@ -1,8 +1,6 @@
 class_name ResourceOwner extends Node
 
 @export var owned_resources : Array
-# a new class for actors should be created, then the string will be replaced
-@export var actor_reference : String
 
 func owns_resource(resource : Resources) -> bool:
 	if owned_resources.has(resource): return true
@@ -19,7 +17,13 @@ func get_resource(resource_name : String) -> Resources:
 	return null
 	
 func receive_resource(resource : Resources) -> void:
-	pass
+	if owns_resource(resource):
+		owned_resources[get_resource(resource.resource_name)].increase_amount(resource.amount)
+	else:
+		owned_resources.append(resource)
 	
 func give_resource(resource : Resources) -> void:
-	pass
+	if owns_resource(resource):
+		owned_resources[get_resource(resource.resource_name)].decrease_amount(resource.amount)
+	else:
+		print("Error. Please implement me. Tried to give resource I don't possess")
